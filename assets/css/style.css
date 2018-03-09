@@ -115,11 +115,20 @@ h3, form, .modal-content {
     justify-content: center;
 } 
 
-form, .media{
+ .media, #trail-options{
     font-family: 'Oldenburg', cursive;
     font-size: 14px;
     font-weight: bold;
     color: #155414;
+}
+
+form {
+    color: whitesmoke;
+    font-family: 'Oldenburg', cursive;
+    font-size: 14px;
+    font-weight: bold;
+
+    
 }
 
 .form-control, #inputState, .favorites-con {
@@ -149,6 +158,8 @@ form, .media{
     cursor: pointer;
     outline: none;
     }
+
+    
   
   .btn:hover {
     background-color: #155414;
@@ -156,3 +167,25 @@ form, .media{
     color: whitesmoke;
     transform: translateY(-7px);
   }
+
+  #map {
+    position: relative;
+    overflow: hidden;
+    height: 350px;
+    width: auto;
+    margin-bottom: 25px;
+}
+
+#trail-info {
+    position: relative;
+  }
+
+footer {
+    background-color: #155414;
+    padding: 10px;
+    padding-top: 30px;
+    margin-bottom: 70px;
+   -moz-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+-webkit-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+box-shadow: 4px 4px 15px 0 #078A41 inset, -4px -4px 15px 0 #078A41 inset;
+}
