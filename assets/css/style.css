@@ -51,10 +51,10 @@ h1 {
     font-size: 14px;
     color:whitesmoke;
     padding: 20px;
-      text-decoration: none;
-      display: inline-block;
-      position: relative;
-      background-color: #155414;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    background-color: #155414;
     letter-spacing: .1em;
     text-shadow: 
       -1px -1px 1px #125828, 
@@ -144,6 +144,11 @@ form {
     outline: none;
     opacity: .85;
 }
+
+.favorites-con {
+    padding: 40px;
+}
+
   .btn, .input {
     width: 175px;
     height: 60px;
@@ -163,10 +168,49 @@ form {
     outline: none;
     opacity: .85;
     }
+  .btnRow {
+    width: 100px;
+    height: 30px;
+    font-family: 'Oldenburg', cursive;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1px;
+    font-weight: 450;
+    color: #155414;
+    background-color: whitesmoke;
+    border: none;
+    border-radius: 35px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    opacity: .85;
+  }
+
+  btnProfile {
+    width: 110px;
+    height: 20px;
+    font-family: 'Oldenburg', cursive;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1px;
+    font-weight: 450;
+    color: #155414;
+    background-color: whitesmoke;
+    border: none;
+    border-radius: 35px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    opacity: .85;
+  }
 
     
   
-  .btn:hover {
+  .btn:hover, .btnRow:hover, btnProfile:hover {
     background-color: #155414;
     box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
     color: whitesmoke;
@@ -179,6 +223,10 @@ form {
     height: 350px;
     width: auto;
     margin-bottom: 25px;
+}
+
+.card {
+    margin: 70px;
 }
 
 #trail-info {
