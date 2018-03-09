@@ -1,0 +1,238 @@
+ <!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Oldenburg" rel="stylesheet">
+    <link rel= "stylesheet" type= "text/css" href= "assets/css/style.css">
+
+    <title>TAKE-A-HIKE</title>
+  </head>
+
+
+  <body class="map-body">
+
+        <div class="jumbotron jumbotron-fluid">
+                  <h1 class="display-4 text-center">TAKE-A-HIKE</h1>
+                  <a href="#" class="effect-underline header">HOME</a>
+                  <a href="profile.html" class="effect-underline header">PROFILE</a>
+                  <a href="favorites.html" class="effect-underline header">FAVORITES</a>
+                  <a href="#" class="effect-underline header">LOG IN</a>
+
+                 
+                    <div class="container">
+                       
+                        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                            <a class="navbar-brand" href="index.html">Take A Hike!</a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                              <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarText">
+                              <ul class="navbar-nav mr-auto">
+                                <li class="nav-item">
+                                  <a class="nav-link" href="favorites.html">Favorites</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a class="nav-link" href="profile.html">Profile</a>
+                                </li>
+                                </ul>
+                              <span class="nav-item">
+                                  <a class="nav-link" >Logout</a>
+                              </span>
+                            </div>
+                          </nav>
+                          <br>
+                        </div>
+                         
+              
+                          <div class="container">
+                          <div id="map"></div>
+                          <div class="row">
+                          <div class="col">
+                            <div id="trail-info"></div>
+                          </div>
+                          <div class="col">
+                             <table class="table" id="trail-options">
+                                      <thead>
+                                        <tr>
+                                          dynamically created w/ API (what will go here first?)
+                                          <th scope="col">Select </th>
+                                          <th scope="col">Park</th>
+                                          <th scope="col">Distance</th>
+                                          <th scope="col">Hours</th>
+                                          </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <td><button type="button" class="btn btn-light">Select</button></td>
+                                          <td>National</td>
+                                          <td>5 Miles</td>
+                                          <td>Sunrise-Sunset</td>
+                                          </tr>
+                                        <tr>
+              
+                                      </tbody>
+                                    </table>
+                          </div>
+                         </div>
+                        </div>
+                      
+              <footer class="bg-dark text-white mt-4">
+                  <div class="container-fluid py-3">
+                      <div class="row">
+                          <div class="col-md-3">
+                              <h5>Footer</h5></div>
+                          <div class="col-md-3"></div>
+                          <div class="col-md-3"></div>
+                          <div class="col-md-3"></div>
+                      </div>
+                      <div class="row">
+                          <div class="col-md-6">I stay at the bottom of the viewport! <span class="small"><br>Unless the page content pushes me further.</span></div>
+                          <div class="col-md-3"></div>
+                          <div class="col-md-3 text-right small align-self-end">©2017 Brand, Inc.</div>
+                      </div>
+                  </div>
+              </footer>
+               
+              
+              
+                        </div>
+                  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+                  <script type="text/javascript" charset="utf-8">
+              
+                  function initMap() { 
+                      var uluru = {lat: 38.9119, lng: -94.41362};
+                      var map = new google.maps.Map(document.getElementById('map'), {
+                        zoom: 4,
+                        center: uluru
+              
+                      });
+                      var marker = new google.maps.Marker({
+                        position: uluru,
+                        map: map
+                        
+                      });
+                  };
+              
+                /*  require(["esri/map", "dojo/domReady!"], function(Map) {
+                  var map = new Map("map", {
+                  center: [-118, 34.5],
+                  zoom: 8,
+                  basemap: "topo"
+                  });
+                */
+                  var myLat = 0;
+                  var myLong = 0;
+                  var queryURL = "";
+              
+                  x = navigator.geolocation;
+                  x.getCurrentPosition(success, failure);
+              
+                  function success(position) {
+                      myLat = parseFloat(position.coords.latitude);
+                      myLong = parseFloat(position.coords.longitude);
+                      //$('#lat').html("Latitude: " + myLat);
+                      //$('#long').html("Longitude: " + myLong);
+                      console.log(myLong);
+                      console.log(myLat);
+              
+                      var apiKey = "200228428-1f5b2e55867344554f904d9273de0486";
+              
+                      queryURL = "https://www.hikingproject.com/data/get-trails?lat=" + myLat +
+                          "&lon=" + myLong + "&maxDistance=100&key=" + apiKey;
+                      console.log(queryURL);
+                      
+                      $.ajax({
+                          url: queryURL,
+                          method: "GET"
+                      })
+                          .then(function (response) { // CREATE FUNCTION TO RUN AT THIS POINT
+              
+              
+                        // Creating a div to hold the trail info
+                        var trailDiv = $("<div class='trail'>");
+                        
+                        var name = response.trails[0].name;
+                        var pOne = $("<p>").text("Name: " + name);      
+                        trailDiv.append(pOne);
+              
+                        
+                        var location = response.trails[0].location;      
+                        var pTwo = $("<p>").text("Location: " + location); 
+                        trailDiv.append(pTwo);
+                        
+                        var summary = response.trails[0].summary;
+                        var pThree = $("<p>").text("Summary: " + summary);
+                        trailDiv.append(pThree);
+              
+              
+                        var imgURL = response.trails[0].imgSmallMed;
+                        var image = $("<img>").attr("src", imgURL);
+              
+                        trailDiv.append(image);
+              
+                        // Putting the entire movie above the previous movies
+                        $("#trail-info").prepend(trailDiv);
+              
+                          console.log(response);
+              
+                          var title = response.trails;
+              
+                          console.log("Trail Name: " + response.trails[1].name);
+                          console.log("About: " + response.trails[1].summary);
+                          console.log("Location: " + response.trails[1].location);
+                          console.log("-----------------------------------------");
+                          console.log("Trail Name: " + response.trails[2].name);
+                          console.log("About: " + response.trails[2].summary);
+                          console.log("Location: " + response.trails[2].location);
+                          console.log("-----------------------------------------");
+                          console.log("Trail Name: " + response.trails[3].name);
+                          console.log("About: " + response.trails[3].summary);
+                          console.log("Location: " + response.trails[3].location);
+                          console.log("-----------------------------------------");
+              
+                        });
+                  }
+              
+              
+              
+                  function failure() {
+                    $('#fail').html("<p>It didn't work.</p>");
+                  }
+              
+              </script>
+                <script async defer
+                  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAikyBYHeJN3o85zIV21gusR0E9SXubJKs&callback=initMap">
+                  </script>
+
+      
+      
+         
+      
+      
+      
+      
+      
+     
+    
+
+    
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="assets/javascript/main.js"></script>
+    
+  </body>
+</html>
+ 
+ 
+ 
+ 
+ 
+ 

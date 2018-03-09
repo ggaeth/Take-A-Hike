@@ -10,101 +10,119 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href ="assets/css/style.css" type ="text/css" rel ="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oldenburg" rel="stylesheet">
+    <link rel= "stylesheet" type= "text/css" href= "assets/css/style.css">
 
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-
-    <title>Take a Hike!</title>
+    <title>TAKE-A-HIKE</title>
   </head>
 
 
-  <body>
+  <body class="favorite-body">
+      
+        <div class="jumbotron jumbotron-fluid">
+                <h1 class="display-4 text-center">TAKE-A-HIKE</h1>
+                <a href="home.html" class="effect-underline header">HOME</a>
+                <a href="profile.html" class="effect-underline header">PROFILE</a>
+                <a href="#" class="effect-underline header">FAVORITES</a>
+                <a href="#" class="effect-underline header">LOG IN</a>
+  </div>      
 <div class="container">
         
           
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="index.html">Take A Hike!</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarText">
-              <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                  <a class="nav-link" href="favorites.html">Favorites<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="profile.html">Profile</a>
-                </li>
-                </ul>
-              <span class="nav-item">
-                  <a class="nav-link" >Logout</a>
-              </span>
-            </div>
-          </nav>
-          <br>
+       
          
 
-          <h3>Saved</h3>
-
-          <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
-                  <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1"> Activity or Park Name</h5>
-                    <small>3 days ago</small>
-                  </div>
-                  <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                  <small>Donec id elit non mi porta.</small>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                  <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">Activity or Park Name</h5>
-                    <small class="text-muted">3 days ago</small>
-                  </div>
-                  <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                  <small class="text-muted">Donec id elit non mi porta.</small>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                  <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">Activity or Park Name</h5>
-                    <small class="text-muted">3 days ago</small>
-                  </div>
-                  <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                  <small class="text-muted">Donec id elit non mi porta.</small>
-                </a>
-              </div>
-
-              <br>
-              <h3>Completed</h3>
-
-              <div class="list-group-completed">
-                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
-                      <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">Activity or Park Name</h5>
-                        <small>3 days ago</small>
-                      </div>
-                      <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                      <small>Donec id elit non mi porta.</small>
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                      <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">Activity or Park Name</h5>
-                        <small class="text-muted">3 days ago</small>
-                      </div>
-                      <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                      <small class="text-muted">Donec id elit non mi porta.</small>
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                      <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">Activity or Park Name</h5>
-                        <small class="text-muted">3 days ago</small>
-                      </div>
-                      <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                      <small class="text-muted">Donec id elit non mi porta.</small>
-                    </a>
-                  </div>
-
-
-        </div>
+        <div class="container favorites-con">
+                <h3>Saved</h3>
+               
+                <ul class="list-unstyled">
+                    <li class="media">
+                        <img class="mr-3" src="assets/images/tree.jpg" width="135px" height="100px" alt="Generic placeholder image">
+                        <div class="media-body">
+                          <h5 class="mt-0 mb-1">Park Name Here</h5>
+                          Park details  from SAVE button on HOME SCREEN here.
+               
+                          All these fields are DYNAMICALLY CREATED when the SAVE button is clicked.  Pulls info from API.
+               
+                        </div>
+                    </li>
+                    <br>
+               
+                    <li class="media">
+                        <img class="mr-3" src="assets/images/tree.jpg" width="135px" height="100px" alt="Generic placeholder image">
+                        <div class="media-body">
+                          <h5 class="mt-0 mb-1">Park Name Here</h5>
+                          Park details  from SAVE button on HOME SCREEN here.
+               
+                          All these fields are DYNAMICALLY CREATED when the SAVE button is clicked.  Pulls info from API.
+               
+                        </div>
+                    </li>
+                    <br>
+               
+                    <li class="media">
+                        <img class="mr-3" src="assets/images/tree.jpg" width="135px" height="100px" alt="Generic placeholder image">
+                        <div class="media-body">
+                          <h5 class="mt-0 mb-1">Park Name Here</h5>
+                          Park details  from SAVE button on HOME SCREEN here.
+               
+                          All these fields are DYNAMICALLY CREATED when the SAVE button is clicked.  Pulls info from API.
+               
+                        </div>
+                    </li>
+                    <br>
+                    
+                  </ul>
+                  
+                  <br>
+               
+                  <h3>Completed</h3>
+               
+                    <ul class="list-unstyled">
+                        <li class="media">
+                            <img class="mr-3" src="assets/images/trees.jpg" width="135px" height="100px" alt="Generic placeholder image">
+                            <div class="media-body">
+                              <h5 class="mt-0 mb-1">Park Name Here</h5>
+                              Park details  from SAVE button on HOME SCREEN here.
+                    
+                              All these fields are DYNAMICALLY CREATED when the *VISITED* button is clicked.  Pulls info from DATABASE.
+                              <br>
+                    
+                              "Visitied: date here"
+                            </div>
+                        </li>
+                        <br>
+                    
+                        <li class="media">
+                            <img class="mr-3" src="assets/images/trees.jpg" width="135px" height="100px" alt="Generic placeholder image">
+                            <div class="media-body">
+                              <h5 class="mt-0 mb-1">Park Name Here</h5>
+                              Park details  from SAVE button on HOME SCREEN here.
+                    
+                              All these fields are DYNAMICALLY CREATED when the *VISITED* button is clicked.  Pulls info from DATABASE.
+                              <br>
+               
+                              "Visitied: date here"
+                    
+                            </div>
+                        </li>
+                        <br>
+                    
+                        <li class="media">
+                            <img class="mr-3" src="assets/images/trees.jpg" width="135px" height="100px" alt="Generic placeholder image">
+                            <div class="media-body">
+                              <h5 class="mt-0 mb-1">Park Name Here</h5>
+                              Park details  from SAVE button on HOME SCREEN here.
+                    
+                              All these fields are DYNAMICALLY CREATED when the *VISITED* button is clicked.  Pulls info from DATABASE. I.
+                              <br>
+                              "Visitied: date here"
+                            </div>
+                        </li>
+                        <br>
+                      
+                    </ul>
+               </div>
   
 
   

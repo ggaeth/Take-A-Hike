@@ -7,157 +7,201 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href ="assets/css/style.css" type ="text/css" rel ="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oldenburg" rel="stylesheet">
+    <link rel= "stylesheet" type= "text/css" href= "assets/css/style.css">
 
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-
-    <title>Take a Hike!</title>
+    <title>TAKE-A-HIKE</title>
   </head>
 
 
-  <body>
-      <div class="container">
-        
-          
-          <nav class="navbar navbar-expand-lg navbar-light bg-light">
-              <a class="navbar-brand" href="index.html">Take A Hike!</a>
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav mr-auto">
-                  <li class="nav-item">
-                    <a class="nav-link" href="favorites.html">Favorites</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="profile.html">Profile</a>
-                  </li>
-                  </ul>
-                <span class="nav-item">
-                    <a class="nav-link" >Logout</a>
-                </span>
-              </div>
-            </nav>
-            <br>
-           
+  <body class="home-body">
 
-            <div class="container">
-                <div class="row">
-                  <div class="col-sm-4">
-                      <div class="dropdown show">
-                          <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Activity
-                          </a>
-                        
-                          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" >Hiking</a>
-                            <a class="dropdown-item" >Biking</a>
-                            <a class="dropdown-item"> Fishing</a>
-                            <a class="dropdown-item"> Hunting</a>
-                          </div>
-                        </div>
-                  </div>
-                  <div class="col-sm-4">
-                      <div class="dropdown show">
-                          <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Miles away
-                          </a>
-                        
-                          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item">5</a>
-                            <a class="dropdown-item">10</a>
-                            <a class="dropdown-item">15</a>
-                            <a class="dropdown-item">20</a>
-                            <a class="dropdown-item">25</a>
-                            <a class="dropdown-item">30</a>
-                            <a class="dropdown-item">35</a>
-                            <a class="dropdown-item">40</a>
-                            <a class="dropdown-item">45</a>
-                            <a class="dropdown-item">50</a>
-                            <a class="dropdown-item">55</a>
-                            
-                          </div>
-                        </div>
-                  </div>
-                  <div class="col-sm-4">
-                      <div class="dropdown show">
-                          <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            From this
-                          </a>
-                        
-                          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <input class="form-control" type="text" placeholder="Zip Code">
-                            <a class="dropdown-item" href="#">Current Locatin</a>
-                            
-                          </div>
-                        </div>
-                  </div>
-                </div>
-              </div>
-              <br>
-          
-          
-          
-            <div class="container">
-              <div class="row">
-              
-              
-                <div class="col-sm-6">
-                    <table class="table">
-                        <thead>
-                          <tr>
-                            dynamically created w/ API (what will go here first?)
-                            <th scope="col">Select </th>
-                            <th scope="col">Park</th>
-                            <th scope="col">Distance</th>
-                            <th scope="col">Hours</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td><button type="button" class="btn btn-light">Select</button></td>
-                            <td>National</td>
-                            <td>5 Miles</td>
-                            <td>Sunrise-Sunset</td>
-                            </tr>
-                          <tr>
-                            <td><button type="button" class="btn btn-light">Select</button></td>
-                            <td>National</td>
-                            <td>5 Miles</td>
-                            <td>Sunrise-Sunset</td>
-                          </tr>
-                          <tr>
-                            <td><button type="button" class="btn btn-light">Select</button></td>
-                            <td>National</td>
-                            <td>5 Miles</td>
-                            <td>Sunrise-Sunset</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                </div>
+        <div class="jumbotron jumbotron-fluid">
+                  <h1 class="display-4 text-center">TAKE-A-HIKE</h1>
+                  <a href="#" class="effect-underline header">HOME</a>
+                  <a href="profile.html" class="effect-underline header">PROFILE</a>
+                  <a href="favorites.html" class="effect-underline header">FAVORITES</a>
+                  <a href="#" class="effect-underline header">LOG IN</a>
 
 
 
-                <div class="col-sm-6">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="assets/images/locator.png" alt="map">
-                        <div class="card-body">
-                          <h5 class="card-title">Park Name</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <a href="#" class="btn btn-light">Save</a>
-                          <a href="#" class="btn btn-light">Clear</a>
-                        </div>
+    </div>
+
+                  
+
+
+
+              <div class="input-group mb-3 m-4">
+                    <div class="input-group-prepend">
+                      <button class="btn btn-outline-secondary dropdown-toggle" type="number" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Activity</button>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Hiking</a>
+                        <a class="dropdown-item" href="#">Fishing</a>
+                        <a class="dropdown-item" href="#">Skiing</a>
+                        <a class="dropdown-item" href="#">Mountain Climbing</a>
                       </div>
+                    </div>
+                    <div class="input-group-prepend">
+                      <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Miles Away</button>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">5</a>
+                        <a class="dropdown-item" href="#">15</a>
+                        <a class="dropdown-item" href="#">25</a>
+                        <a class="dropdown-item" href="#">50</a>
+                      </div>
+                      <button class="btn btn-outline-secondary" type="button">Current Location</button>
+                    </div>
+                    <input type="text" placeholder="Zip Code" class="input form-control col-sm-2" aria-label="Text input with dropdown button">
+                    </div>
+                  
+               
+          
+          
+        
+
+
+        <div class="modal fade bd-example-modal-lg" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    Welcome! Here at Take-A-Hike we love the outdoors. From fishing, to skiing, to mountain climbing, and of course our name sake: hiking.
+                    <button type="submit" class="btn btn-primary" id="continueBtn">Continue</button>
+                  </div>
+              </div>
+              
+      
+              <div class="modal fade bd-example-modal-lg" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                      <h3 class="text-center">Sign in or become a member to discover your next excursion!</h3>
+                          <form>
+                                  <div class="form-group">
+                                    <label for="exampleInputEmail1">Email address</label>
+                                    <input type="email" class="form-control" id="txtEmail" aria-describedby="emailHelp" placeholder="Enter email">
+                                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="exampleInputPassword1">Password</label>
+                                    <input type="password" class="form-control" id="txtPassword" placeholder="Password">
+                                  </div>
+                                  <button type="submit" class="btn btn-primary" id="logIn">Log in</button>
+                                  <button type="submit" class="btn btn-primary" id="signUp">Sign up</button>
+                                  <button type="submit" class="btn btn-primary d-none" id="logOut">Log out</button>
+                                </form>
+                  </div>
                 </div>
               </div>
-            </div>
-
-
-
-          </div>
+      
+      
+         
+      
+      
+      
+      
+      
+      
+      
+      <script>
+        // Initialize Firebase
+          var config = {
+            apiKey: "AIzaSyBlCrv2E_pScDDDWYqj27T4Nr72hLc5Okw",
+            authDomain: "test-authentication-march.firebaseapp.com",
+            databaseURL: "https://test-authentication-march.firebaseio.com",
+            projectId: "test-authentication-march",
+            storageBucket: "test-authentication-march.appspot.com",
+            messagingSenderId: "1014982371782"
+          };
+      
+          firebase.initializeApp(config); 
+      
+          $(window).on('load',function(){
+              $('#myModal1').modal('show');
+          });
+      
+          $("#continueBtn").on("click", function(){
+              $("#myModal2").modal("show");
+      
+          });
+      
+      
+        
+        var txtEmail = $("#txtEmail").val().trim()
+        var txtPassword = $("#txtPassword").val().trim()
+        var logIn = $("#logIn").val().trim()
+        var logOut = $("#logOut").val().trim()
+        var signUp = $("#signUp").val().trim()
+      
+        $("#logIn").on("click", function(){
+            event.preventDefault();
+            
+          //grabs email and password input 
+            var email = $("#txtEmail").val().trim();
+            var pass = $("#txtPassword").val().trim();
+            var auth = firebase.auth();
+            //Sign in 
+            var promise = auth.signInWithEmailAndPassword(email, pass);
+      
+            if(email,pass){
+            $("#myModal2").modal("hide");
+            $("#myModal1").modal("hide");
+            }else{
+                alert("Please Log in or register");
+                $("#myModal1").modal("hide");
+                $("#myModal2").modal("show");
+                
+      
+      
+            };
+      
+            promise.catch(function(error){
+              console.log(error);
+            });
+            
+        });
+      
+        //add sign up event
+        $("#signUp").on("click", function(){
+            event.preventDefault();
+            $("#myModal2").modal("hide");
+            $("#myModal1").modal("hide");
+      
+               //grabs email and password input 
+                var email = $("#txtEmail").val().trim();
+                var pass = $("#txtPassword").val().trim();
+                var auth = firebase.auth();
+                //Sign in 
+                var promise = auth.createUserWithEmailAndPassword(email, pass);
+      
+                if(email,pass){
+                  $("#myModal2").modal("hide");
+                  $("#myModal1").modal("hide");
+                  }else{
+                      alert("Please Log in or register");
+                      $("#myModal1").modal("hide");
+                      $("#myModal2").modal("show");
+      
+            
+                  };
+          
+                promise.catch(function(error){
+                  console.log(error);
+                });
+                
+      
+        });
+      
+        //add realtime listener 
+        firebase.auth().onAuthStateChanged(function(firebaseUser){
+            if(firebaseUser) {
+                console.log(firebaseUser);
+            } else {
+                console.log("not logged in");
+            }
+        })
+      </script>
     
 
     
