@@ -115,11 +115,20 @@ h3, form, .modal-content {
     justify-content: center;
 } 
 
-form, .media, #trail-options{
+ .media, #trail-options{
     font-family: 'Oldenburg', cursive;
     font-size: 14px;
     font-weight: bold;
     color: #155414;
+}
+
+form {
+    color: whitesmoke;
+    font-family: 'Oldenburg', cursive;
+    font-size: 14px;
+    font-weight: bold;
+
+    
 }
 
 .form-control, #inputState, .favorites-con {
@@ -149,6 +158,8 @@ form, .media, #trail-options{
     cursor: pointer;
     outline: none;
     }
+
+    
   
   .btn:hover {
     background-color: #155414;
