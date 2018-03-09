@@ -6,6 +6,7 @@
    -moz-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
 -webkit-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
 box-shadow: 4px 4px 15px 0 #078A41 inset, -4px -4px 15px 0 #078A41 inset;
+opacity: .98;
 
 
 }
@@ -34,6 +35,8 @@ h1 {
       0 14px 0 #141414, 
       0 15px 0 #121212, 
       0 22px 30px rgba(0, 0, 0, 0.9);
+      opacity: .98;
+
   }
 
   a.dropdown-item {
@@ -158,6 +161,7 @@ form {
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
+    opacity: .85;
     }
 
     
