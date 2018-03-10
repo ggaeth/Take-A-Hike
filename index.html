@@ -1,215 +1,127 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Oldenburg" rel="stylesheet">
-    <link rel= "stylesheet" type= "text/css" href= "assets/css/style.css">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
 
-    <title>TAKE-A-HIKE</title>
-  </head>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Oldenburg" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <!-- Google Maps api -->
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAikyBYHeJN3o85zIV21gusR0E9SXubJKs"></script>
 
-
-  <body class="home-body">
-
-        <div class="jumbotron jumbotron-fluid">
-                  <h1 class="display-4 text-center">TAKE-A-HIKE</h1>
-                  <a href="#" class="effect-underline header">HOME</a>
-                  <a href="profile.html" class="effect-underline header">PROFILE</a>
-                  <a href="favorites.html" class="effect-underline header">FAVORITES</a>
-                  <a href="#" class="effect-underline header">LOG IN</a>
+  <title>TAKE-A-HIKE</title>
+</head>
 
 
+<body class="home-body">
 
+  <div class="container-fluid">
+
+    <div class="jumbotron jumbotron-fluid mb-3">
+      <h1 class="display-4 text-center">TAKE-A-HIKE</h1>
+      <a href="#" class="effect-underline header">HOME</a>
+      <a href="profile.html" class="effect-underline header">PROFILE</a>
+      <a href="favorites.html" class="effect-underline header">FAVORITES</a>
+      <a href="#" class="effect-underline header">LOG IN</a>
     </div>
 
-                  
+  </div>
+
+  <div class="container-fluid">
+
+    <div class="activity-selector input-group">
+      <div class="input-group input-group-prepend">
+        <button class="btn btn-outline-secondary btn-group dropdown-toggle" id="activity-btn" type="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">Activity</button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#" data-activity="hiking">Hiking</a>
+          <a class="dropdown-item" href="#" data-activity="fishing">Fishing</a>
+          <a class="dropdown-item" href="#" data-activity="skiing">Skiing</a>
+          <a class="dropdown-item" href="#" data-activity="mtn-climbing">Mountain Climbing</a>
+        </div>
+        <button class="btn btn-outline-secondary btn-group dropdown-toggle" id="distance-btn" type="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">Miles Away</button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#" data-distance="5">5</a>
+          <a class="dropdown-item" href="#" data-distance="15">15</a>
+          <a class="dropdown-item" href="#" data-distance="25">25</a>
+          <a class="dropdown-item" href="#" data-distance="50">50</a>
+        </div>
+        <button class="btn btn-outline-secondary btn-group" id="current-loc-btn" type="button">Use Current Location</button>
+        <label class="input-group-text form-control" for="zip-code-input">or Enter Zip Code</label>
+        <input type="number" class="form-control" id="zip-code-input" placeholder="5 digit numeric">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary btn-group" type="submit">Submit</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- API results display table -->
+    <div class="data-display-area col-sm-12">
+    </div>
+
+  </div>
 
 
 
-              <div class="input-group mb-3 m-4">
-                    <div class="input-group-prepend">
-                      <button class="btn btn-outline-secondary dropdown-toggle" type="number" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Activity</button>
-                      <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Hiking</a>
-                        <a class="dropdown-item" href="#">Fishing</a>
-                        <a class="dropdown-item" href="#">Skiing</a>
-                        <a class="dropdown-item" href="#">Mountain Climbing</a>
-                      </div>
-                    </div>
-                    <div class="input-group-prepend">
-                      <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Miles Away</button>
-                      <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">5</a>
-                        <a class="dropdown-item" href="#">15</a>
-                        <a class="dropdown-item" href="#">25</a>
-                        <a class="dropdown-item" href="#">50</a>
-                      </div>
-                      <button class="btn btn-outline-secondary" type="button">Current Location</button>
-                    </div>
-                    <input type="text" placeholder="Zip Code" class="input form-control col-sm-2" aria-label="Text input with dropdown button">
-                    </div>
-                  
-               
-          
-          
-        
+  <div class="modal fade bd-example-modal-lg" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        Welcome! Here at Take-A-Hike we love the outdoors. From fishing, to skiing, to mountain climbing, and of course our name
+        sake: hiking.
+        <button type="submit" class="btn btn-primary" id="continueBtn">Continue</button>
+      </div>
+    </div>
+  </div>
 
 
-        <div class="modal fade bd-example-modal-lg" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                  <div class="modal-content">
-                    Welcome! Here at Take-A-Hike we love the outdoors. From fishing, to skiing, to mountain climbing, and of course our name sake: hiking.
-                    <button type="submit" class="btn btn-primary" id="continueBtn">Continue</button>
-                  </div>
-              </div>
-              
-      
-              <div class="modal fade bd-example-modal-lg" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                  <div class="modal-content">
-                      <h3 class="text-center">Sign in or become a member to discover your next excursion!</h3>
-                          <form>
-                                  <div class="form-group">
-                                    <label for="exampleInputEmail1"></label>
-                                    <input type="email" class="form-control" id="txtEmail" aria-describedby="emailHelp" placeholder="Enter email">
-                                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                                  </div>
-                                  <div class="form-group">
-                                    <label for="exampleInputPassword1"></label>
-                                    <input type="password" class="form-control" id="txtPassword" placeholder="Password">
-                                  </div>
-                                  <button type="submit" class="btn btn-primary" id="logIn">Log in</button>
-                                  <button type="submit" class="btn btn-primary" id="signUp">Sign up</button>
-                                  <button type="submit" class="btn btn-primary d-none" id="logOut">Log out</button>
-                                </form>
-                  </div>
-                </div>
-              </div>
-      
-      
-         
-      
-      
-      
-      
-      
-      
-      
-      <script>
-        // Initialize Firebase
-          var config = {
-            apiKey: "AIzaSyBlCrv2E_pScDDDWYqj27T4Nr72hLc5Okw",
-            authDomain: "test-authentication-march.firebaseapp.com",
-            databaseURL: "https://test-authentication-march.firebaseio.com",
-            projectId: "test-authentication-march",
-            storageBucket: "test-authentication-march.appspot.com",
-            messagingSenderId: "1014982371782"
-          };
-      
-          firebase.initializeApp(config); 
-      
-          $(window).on('load',function(){
-              $('#myModal1').modal('show');
-          });
-      
-          $("#continueBtn").on("click", function(){
-              $("#myModal2").modal("show");
-      
-          });
-      
-      
-        
-        var txtEmail = $("#txtEmail").val().trim()
-        var txtPassword = $("#txtPassword").val().trim()
-        var logIn = $("#logIn").val().trim()
-        var logOut = $("#logOut").val().trim()
-        var signUp = $("#signUp").val().trim()
-      
-        $("#logIn").on("click", function(){
-            event.preventDefault();
-            
-          //grabs email and password input 
-            var email = $("#txtEmail").val().trim();
-            var pass = $("#txtPassword").val().trim();
-            var auth = firebase.auth();
-            //Sign in 
-            var promise = auth.signInWithEmailAndPassword(email, pass);
-      
-            if(email,pass){
-            $("#myModal2").modal("hide");
-            $("#myModal1").modal("hide");
-            }else{
-                alert("Please Log in or register");
-                $("#myModal1").modal("hide");
-                $("#myModal2").modal("show");
-                
-      
-      
-            };
-      
-            promise.catch(function(error){
-              console.log(error);
-            });
-            
-        });
-      
-        //add sign up event
-        $("#signUp").on("click", function(){
-            event.preventDefault();
-            $("#myModal2").modal("hide");
-            $("#myModal1").modal("hide");
-      
-               //grabs email and password input 
-                var email = $("#txtEmail").val().trim();
-                var pass = $("#txtPassword").val().trim();
-                var auth = firebase.auth();
-                //Sign in 
-                var promise = auth.createUserWithEmailAndPassword(email, pass);
-      
-                if(email,pass){
-                  $("#myModal2").modal("hide");
-                  $("#myModal1").modal("hide");
-                  }else{
-                      alert("Please Log in or register");
-                      $("#myModal1").modal("hide");
-                      $("#myModal2").modal("show");
-      
-            
-                  };
-          
-                promise.catch(function(error){
-                  console.log(error);
-                });
-                
-      
-        });
-      
-        //add realtime listener 
-        firebase.auth().onAuthStateChanged(function(firebaseUser){
-            if(firebaseUser) {
-                console.log(firebaseUser);
-            } else {
-                console.log("not logged in");
-            }
-        })
+  <div class="modal fade bd-example-modal-lg" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <h3 class="text-center">Sign in or become a member to discover your next excursion!</h3>
+        <form>
+          <div class="form-group">
+            <label for="exampleInputEmail1"></label>
+            <input type="email" class="form-control" id="txtEmail" aria-describedby="emailHelp" placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1"></label>
+            <input type="password" class="form-control" id="txtPassword" placeholder="Password">
+          </div>
+          <button type="submit" class="btn btn-primary" id="logIn">Log in</button>
+          <button type="submit" class="btn btn-primary" id="signUp">Sign up</button>
+          <button type="submit" class="btn btn-primary d-none" id="logOut">Log out</button>
+        </form>
+      </div>
+    </div>
+  </div>
 
-     
-  
-      </script>
-    
 
-    
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="assets/javascript/main.js"></script>
-    
-  </body>
+
+
+
+
+
+
+
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="assets/javascript/logic.js"></script>
+
+</body>
+
 </html>

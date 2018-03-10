@@ -111,11 +111,15 @@ h3, form, .modal-content {
     font-weight: bold;
     color: #155414;
 }
-.input-group {
+/*.input-group {
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+} */
+
+#current-loc-btn {
+  width: 230px;
 } 
 
  .media, #trail-options{
@@ -208,7 +212,13 @@ form {
     opacity: .85;
   }
 
-    
+   #zip-code-input:hover {
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: white;
+    transform: translateY(-7px);
+  }
+ 
+
   
   .btn:hover, .btnRow:hover, btnProfile:hover {
     background-color: #155414;
@@ -231,5 +241,28 @@ form {
 
 #trail-info {
     position: relative;
+  }
+
+  .table {
+    background-color: whitesmoke;
+    border: none;
+    border-radius: 35px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    opacity: .95;
+}
+
+
+/* Hide HTML5 Up and Down arrows. */
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+  }
+input[type="number"] {
+  -moz-appearance: textfield;
   }
 
