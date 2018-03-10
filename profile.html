@@ -1,17 +1,26 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+   <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Oldenburg" rel="stylesheet">
-    <link rel= "stylesheet" type= "text/css" href= "assets/css/style.css">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Oldenburg" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <!-- Google Maps api -->
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAikyBYHeJN3o85zIV21gusR0E9SXubJKs"></script>
+
+  <title>TAKE-A-HIKE</title>
 
     <title>TAKE-A-HIKE</title>
   </head>
@@ -24,8 +33,8 @@
       <a href="index.html" class="effect-underline header">HOME</a>
       <a href="#" class="effect-underline header">PROFILE</a>
       <a href="favorites.html" class="effect-underline header">FAVORITES</a>
-      <a href="#" class="effect-underline header">LOG IN</a>
-  </div>
+      <a class="effect-underline header" id="logInBtn"></a>
+    </div>
 
 
          
@@ -39,14 +48,18 @@
 <form>
 
     <div class="form-row">
+        <div class="form-group col-md-12">
+            <label for="inputName"></label>
+            <input type="name" class="form-control" id="inputName" placeholder="NAME">
+          </div>
       <div class="form-group col-md-6">
-        <label for="inputEmail4"></label>
-        <input type="email" class="form-control" id="inputEmail4" placeholder="EMAIL">
+        <label for="inputEmail"></label>
+        <input type="email" class="form-control" id="inputEmail" placeholder="EMAIL">
       </div>
 
       <div class="form-group col-md-6">
-        <label for="inputPassword4"></label>
-        <input type="password" class="form-control" id="inputPassword4" placeholder="PASSWORD">
+        <label for="inputPassword"></label>
+        <input type="password" class="form-control" id="inputPassword" placeholder="PASSWORD">
       </div>
     </div>
 
@@ -129,17 +142,40 @@
       </div>
     </div>
     
-    <button type="submit" class="btn btnProfile">UPDATE PROFILE</button>
+    <button type="submit" class="btn btnProfile" id="updateProfileBtn">UPDATE PROFILE</button>
   </form>
 
 
 
 </div>
+
+<div class="modal fade bd-example-modal-lg" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <h3 class="text-center">Sign in or become a member to discover your next excursion!</h3>
+        <form>
+          <div class="form-group">
+            <label for="exampleInputEmail1"></label>
+            <input type="email" class="form-control" id="txtEmail" aria-describedby="emailHelp" placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1"></label>
+            <input type="password" class="form-control" id="txtPassword" placeholder="Password">
+          </div>
+          <button type="submit" class="btn btn-primary" id="logIn">Log in</button>
+          <button type="submit" class="btn btn-primary" id="signUp">Sign up</button>
+          <button type="submit" class="btn btn-primary d-none" id="logOut">Log out</button>
+        </form>
+      </div>
+    </div>
+  </div>
   
 
   
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="assets/javascript/main.js"></script>
+  <script src="assets/javascript/logic.js"></script>
   
 </body>
 </html>

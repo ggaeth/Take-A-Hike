@@ -27,17 +27,13 @@
 
 <body class="home-body">
 
-  <div class="container-fluid">
-
-    <div class="jumbotron jumbotron-fluid mb-3">
-      <h1 class="display-4 text-center">TAKE-A-HIKE</h1>
-      <a href="#" class="effect-underline header">HOME</a>
-      <a href="profile.html" class="effect-underline header">PROFILE</a>
-      <a href="favorites.html" class="effect-underline header">FAVORITES</a>
-      <a href="#" class="effect-underline header">LOG IN</a>
-    </div>
-
-  </div>
+    <div class="jumbotron jumbotron-fluid">
+        <h1 class="display-4 text-center">TAKE-A-HIKE</h1>
+        <a href="#" class="effect-underline header">HOME</a>
+        <a href="profile.html" class="effect-underline header">PROFILE</a>
+        <a href="favorites.html" class="effect-underline header">FAVORITES</a>
+        <a class="effect-underline header" id="logInBtn"></a>
+      </div>
 
   <div class="container-fluid">
 
@@ -60,8 +56,7 @@
           <a class="dropdown-item" href="#" data-distance="50">50</a>
         </div>
         <button class="btn btn-outline-secondary btn-group" id="current-loc-btn" type="button">Use Current Location</button>
-        <label class="input-group-text form-control" for="zip-code-input">or Enter Zip Code</label>
-        <input type="number" class="form-control" id="zip-code-input" placeholder="5 digit numeric">
+        <input type="number" class="form-control" id="zip-code-input" maxlength="5" placeholder="Zip Code">
         <div class="input-group-append">
           <button class="btn btn-outline-secondary btn-group" type="submit">Submit</button>
         </div>
@@ -74,18 +69,6 @@
 
   </div>
 
-
-
-  <div class="modal fade bd-example-modal-lg" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        Welcome! Here at Take-A-Hike we love the outdoors. From fishing, to skiing, to mountain climbing, and of course our name
-        sake: hiking.
-        <button type="submit" class="btn btn-primary" id="continueBtn">Continue</button>
-      </div>
-    </div>
-  </div>
 
 
   <div class="modal fade bd-example-modal-lg" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"

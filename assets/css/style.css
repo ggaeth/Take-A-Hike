@@ -2,7 +2,7 @@
     background-color: #155414;
     padding: 10px;
     padding-top: 30px;
-    margin-bottom: 70px;
+    margin-bottom: 65px;
    -moz-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
 -webkit-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
 box-shadow: 4px 4px 15px 0 #078A41 inset, -4px -4px 15px 0 #078A41 inset;
@@ -39,18 +39,27 @@ h1 {
 
   }
 
-  a.dropdown-item {
-    font-family: 'Oldenburg', cursive;
-    font-size: 13px;
-    color: #155414;
-    padding: 20px;  
+  #logInBtn {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
   }
 
-  a.header {
+  a.dropdown-item, #zip-code-input {
+    font-family: 'Oldenburg', cursive;
+    font-size: 13px;
+    color: #155414; 
+  }
+
+  a.header, #logInBtn {
     font-family: 'Oldenburg', cursive;
     font-size: 14px;
     color:whitesmoke;
-    padding: 20px;
+    padding: 10px;
     text-decoration: none;
     display: inline-block;
     position: relative;
@@ -61,7 +70,7 @@ h1 {
       2px 2px 1px #0A3011;
   }
 
-  a.effect-underline:before {
+  a.effect-underline:before, #logInBtn:before {
 	content: '';
   position: absolute;
   left: 0;
@@ -77,7 +86,7 @@ h1 {
 	transform: scale(0,1);
 }
 
-a.effect-underline:hover:before {
+a.effect-underline:hover:before, #logInBtn:hover:before  {
     opacity: 1;
       -webkit-transform: scale(1);
       transform: scale(1);
@@ -136,6 +145,11 @@ form {
     font-weight: bold;
 
     
+}
+
+#zip-code-input.form-control {
+  width: 100px;
+  height: 60px;
 }
 
 .form-control, #inputState, .favorites-con {
@@ -214,8 +228,9 @@ form {
 
    #zip-code-input:hover {
     box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
-    color: white;
-    transform: translateY(-7px);
+    color: #155414;
+    font-family: 'Oldenburg', cursive;
+    /*transform: translateY(-7px);*/
   }
  
 

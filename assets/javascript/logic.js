@@ -114,26 +114,24 @@ var config = {
 };
 firebase.initializeApp(config);
 
-// On window load - present #myModal1 
-$(window).on('load', function () {
-  $('#myModal1').modal('show');
+// On log in btn click - present #myModal2 
+$(window).on('load', function(){
+    $("#logInBtn").text("LOG IN");
+});
+$("#logInBtn").on('click', function () {
+  $('#myModal2').modal('show');
 });
 
-// when #myModal1 continue button is clicked - present sign-in #myModal2
-$("#continueBtn").on("click", function () {
-  $("#myModal2").modal("show");
-
-});
-
-var txtEmail = $("#txtEmail").val().trim()
-var txtPassword = $("#txtPassword").val().trim()
-var logIn = $("#logIn").val().trim()
-var logOut = $("#logOut").val().trim()
-var signUp = $("#signUp").val().trim()
+var txtEmail = $("#txtEmail").val().trim();
+var txtPassword = $("#txtPassword").val().trim();
+var logIn = $("#logIn").val().trim();
+var logOut = $("#logOut").val().trim();
+var signUp = $("#signUp").val().trim();
 
 // when login button is clicked 
 $("#logIn").on("click", function () {
     event.preventDefault();
+    $("#logInBtn").text("LOG OUT");
     //grabs email and password input 
     var email = $("#txtEmail").val().trim();
     var pass = $("#txtPassword").val().trim();
@@ -142,12 +140,11 @@ $("#logIn").on("click", function () {
     var promise = auth.signInWithEmailAndPassword(email, pass);
     if (email, pass) {
         $("#myModal2").modal("hide");
-        $("#myModal1").modal("hide");
+        
     } else {
         alert("Please Log in or register");
-        $("#myModal1").modal("hide");
         $("#myModal2").modal("show");
-    };
+    }
 
     promise.catch(function (error) {
         console.log(error);
@@ -158,7 +155,6 @@ $("#logIn").on("click", function () {
 $("#signUp").on("click", function () {
     event.preventDefault();
     $("#myModal2").modal("hide");
-    $("#myModal1").modal("hide");
 
     //grabs email and password input
     var email = $("#txtEmail").val().trim();
@@ -168,12 +164,10 @@ $("#signUp").on("click", function () {
     var promise = auth.createUserWithEmailAndPassword(email, pass);
     if (email, pass) {
         $("#myModal2").modal("hide");
-        $("#myModal1").modal("hide");
     } else {
         alert("Please Log in or register");
-        $("#myModal1").modal("hide");
         $("#myModal2").modal("show");
-    };
+    }
 
     promise.catch(function (error) {
         console.log(error);
@@ -187,7 +181,71 @@ firebase.auth().onAuthStateChanged(function (firebaseUser) {
     } else {
         console.log("not logged in");
     }
-})
+});
+
+//retrieves info from the form
+$("#updateProfileBtn").on("click", function () {
+	event.preventDefault();
+    
+    var name = $("#inputName").val().trim();
+	var email = $("#inputEmail").val().trim();
+	var password = $("#inputPassword").val().trim();
+	var address = $("#inputAddress").val().trim();
+    var address2 = $("#inputAddress2").val().trim();
+    var city = $("#inputCity").val().trim();
+    var state = $("#inputState").val().trim();
+	var zipCode = $("#inputZip").val().trim();
+
+
+	database.ref().push({
+        name: name,
+		email: email,
+		password: password,
+        address: address,
+        address2: address2,
+        city: city,
+        state: state,
+        zipCode: zipCode
+    });
+});
+    
+    database.ref().on("child_added", function (snapshot) {
+        
+        var name = snapshot.val().name;
+		var email = snapshot.val().email;
+		var password = snapshot.val().password;
+		var address = snapshot.val().address;
+		var address2 = snapshot.val().address2;
+		var city = snapshot.val().city;
+        var state = snapshot.val().state;
+        var zipCode = snapshot.val().zipCode;
+		var tr = $("<tr>");
+		$("tbody").append(tr);
+		tr.append("<td>" + name + "</td>");
+		tr.append("<td>" + address + "</td>");
+        tr.append("<td>" + city + "</td>");
+        tr.append("<td>" + state + "</td>");
+        tr.append("<td>" + zipCode + "</td>");
+
+
+        
+
+
+
+    $("#inputName").val("");
+    $("#inputEmail").val("");
+	$("#inputPassword").val("");
+	$("#inputAddress").val("");
+	$("#inputAddress2").val("");
+    $("#inputCity").val("");
+	$("#inputState").val("");
+	$("#inputZip").val("");
+
+	return false;
+});
+
+
+
 
 //  When user clicks the activity dropdown menu button. 
 $(document).on("click", "#activity-btn", function () {
