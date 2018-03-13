@@ -10,7 +10,15 @@ var currPosOptions = {
     maximumAge: 0
 };
 
+var btnActivity = "";
+var btnDistance = "";
+var zipCode = "";
+var zipJsonData = "";
+var zipJsonLat = "";
+var zipJsonLong = "";
+
 var response = "";
+
 
 // ======================================< functions >============================================ //
 function currPosError(err) {
@@ -26,13 +34,97 @@ function processGeolocationResult(position) {
     return (html5Lat).toFixed(8) + ", " + (html5Lon).toFixed(8);
 }
 
-function callHikingApi(apiLat, apiLong, distance) {
+function getLatLongFromZip(zipInput) {
+
+    var zipApiKey = "jO6Qt8toUAFBDMN6qwx2F4vYeB03vgd0PhTWwLXTf6o7n3U8nNHmlSE6POCUZIjE";
+    // Build url
+    var zipApiUrl = "https://www.zipcodeapi.com/rest/" + zipApiKey + "/info.json/" + zipInput + "/degrees";
+    
+    // Make AJAX request
+    $.ajax({
+        "url": zipApiUrl,
+        method: "GET"
+    }).then(function (zipJsonData) {
+        zipJsonLat = parseFloat(zipJsonData.lat).toFixed(8);
+        zipJsonLong = parseFloat(zipJsonData.lng).toFixed(8);
+
+        // call the prepareApiCall function 
+        prepareApiCall(btnActivity, btnDistance, zipJsonLat, zipJsonLong);
+    });
+}
+
+function prepareApiCall(btnActivity, btnDistance, apiLat, apiLong) {
+    var lat = apiLat;
+    var long = apiLong;
+
+    if (btnActivity === "") {
+        // send a back button and an error message back to user.
+        $(".activity-selector").addClass("d-none");
+        var tblDiv = $("<table>");
+        tblDiv.addClass("table-responsive-sm");
+        tblDiv.addClass("table");
+        $(".data-display-area").append(tblDiv);
+        var theadDiv = $("<thead>");
+        $(tblDiv).append(theadDiv);
+        var trowDiv = $("<tr>");
+        theadDiv.append(trowDiv);
+        trowDiv.prepend("<button type='button' class='goto-activity-btn btn btn-sm'>Back");
+        trowDiv.append("<td class='api-detail text-left align-middle'><pre class='mb-0'><h6 class='mb-0'>No Activity was selected !<br><em>Please resubmit a search that specifies an Activity, a Miles Away, a Current Location or a 5 digit Zip Code.</em></pre></td>");
+    }
+    else if (btnDistance === "") {
+        // // send a back button and an error message back to user.
+        $(".activity-selector").addClass("d-none");
+        var tblDiv = $("<table>");
+        tblDiv.addClass("table-responsive-sm");
+        tblDiv.addClass("table");
+        $(".data-display-area").append(tblDiv);
+        var theadDiv = $("<thead>");
+        $(tblDiv).append(theadDiv);
+        var trowDiv = $("<tr>");
+        theadDiv.append(trowDiv);
+        trowDiv.prepend("<button type='button' class='goto-activity-btn btn btn-sm'>Back");
+        trowDiv.append("<td class='api-detail text-left align-middle'><pre class='mb-0'><h6 class='mb-0'>No Miles Away was selected !<br><em>Please resubmit a search that specifies an Activity, a Miles Away, a Current Location or a 5 digit Zip Code.</em></pre></td>");
+    }
+    else if (lat === '' || long === '') {
+        // // send a back button and an error message back to user.
+        $(".activity-selector").addClass("d-none");
+        var tblDiv = $("<table>");
+        tblDiv.addClass("table-responsive-sm");
+        tblDiv.addClass("table");
+        $(".data-display-area").append(tblDiv);
+        var theadDiv = $("<thead>");
+        $(tblDiv).append(theadDiv);
+        var trowDiv = $("<tr>");
+        theadDiv.append(trowDiv);
+        trowDiv.prepend("<button type='button' class='goto-activity-btn btn btn-sm'>Back");
+        trowDiv.append("<td class='api-detail text-left align-middle'><pre class='mb-0'><h6 class='mb-0'>A problem was encountered while trying to locate your entered position.<br><em>Please resubmit a search that specifies an Activity, a Miles Away, a Current Location or a 5 digit Zip Code.</em></pre></td>");
+    }
+    else {
+        // call an api based on the activity button selected.
+        switch (btnActivity) {
+            case "Hiking":
+                callHikingApi(lat, long, btnDistance);
+                break;
+            case "Mountain Biking":
+                callMtnBikingApi(lat, long, btnDistance) 
+                break;
+            case "Skiing":
+                callSkiingApi(lat, long, btnDistance);
+                break;
+            case "Mountain Climbing":
+                callMtnClimbingApi(lat, long, btnDistance)
+                break;
+        }
+    }
+}
+
+function callHikingApi(hikingLat, hikingLong, apiDistance) {
 
     var apiKey = "200228428-1f5b2e55867344554f904d9273de0486";
 
-    queryURL = "https://www.hikingproject.com/data/get-trails?lat=" + apiLat +
-        "&lon=" + apiLong + "&maxDistance=" + distance + "&key=" + apiKey;
-    
+    queryURL = "https://www.hikingproject.com/data/get-trails?lat=" + hikingLat +
+        "&lon=" + hikingLong + "&maxDistance=" + apiDistance + "&key=" + apiKey;
+
     $.ajax({
         url: queryURL,
         method: "GET"
@@ -41,10 +133,56 @@ function callHikingApi(apiLat, apiLong, distance) {
     });
 }
 
+function callMtnBikingApi(mtnbikingLat, mtnbikingLong, apiDistance) {
+
+    var apiKey = "200228428-1f5b2e55867344554f904d9273de0486";
+
+    queryURL = "https://www.mtbproject.com/data/get-trails?lat=" + mtnbikingLat +
+        "&lon=" + mtnbikingLong + "&maxDistance=" + apiDistance + "&key=" + apiKey;
+
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+        buildAPIrows(response);
+    });
+}
+
+function callSkiingApi(skiingLat, skiingLong, apiDistance) {
+
+    var apiKey = "200228428-1f5b2e55867344554f904d9273de0486";
+
+    queryURL = "https://www.powderproject.com/data/get-trails?lat=" + skiingLat +
+        "&lon=" + skiingLong + "&maxDistance=" + apiDistance + "&key=" + apiKey;
+
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+        buildAPIrows(response);
+    });
+}    
+
+function callMtnClimbingApi(mtnclimbingLat, mtnclimbingLong, apiDistance) {
+
+    var apiKey = "200228428-df342573e943430d27861e3e0bbe6123";
+
+    queryURL = "https://www.mountainproject.com/data/get-routes-for-lat-lon?lat=" + mtnclimbingLat +
+        "&lon=" + mtnclimbingLong + "&maxDistance=" + apiDistance + "&key=" + apiKey;
+
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+        buildClimbAPIrows(response);
+    });
+}
+
 function buildAPIrows(response) {
     // this hides the activity selector bar.
     $(".activity-selector").addClass("d-none");
     // dynamically create table div.
+
     var tblDiv = $("<table>");
     tblDiv.addClass("table-responsive-sm");
     tblDiv.addClass("table");
@@ -54,50 +192,117 @@ function buildAPIrows(response) {
     var theadDiv = $("<thead>");
     $(tblDiv).append(theadDiv);
 
-    // dynamically create table row div.
+    // dynamically create table row div.    
     var trowDiv = $("<tr>");
     theadDiv.append(trowDiv);
 
-    // dynamically create th rows.
-    trowDiv.prepend("<button type='button' class='goto-activity-btn btn btn-sm'>Back");
-    trowDiv.append("<th scope='col'><strong>Trail Name</strong></th>");
-    trowDiv.append("<th scope='col'><strong>Location</strong></th>");
-    trowDiv.append("<th scope='col'><strong>Trail Length (miles)</strong></th>");
-    trowDiv.append("<th scope='col'><strong>Difficulty</strong></th>");
-    trowDiv.append("<th scope='col'><strong>Stars</strong></th>");
-    trowDiv.append("<th scope='col'><strong>Star Votes</strong></th>");
+    if (response.trails.length === 0) {
+        // send a back button and a no trails found message to user.
+        trowDiv.prepend("<button type='button' class='goto-activity-btn btn btn-sm'>Back");
+        trowDiv.append("<td class='api-detail text-left align-middle'><pre class='mb-0'><h6 class='mb-0' >Sorry ! No trails were found for the specified Miles Away.<em>    Use the Back button to return to the previous screen.</em></h6></pre></td>");
+    }
+    else {
+        // dynamically create the table header row.
+        trowDiv.prepend("<button type='button' class='goto-activity-btn btn btn-sm'>Back");
+        trowDiv.append("<th scope='col'><strong>Trail Name</strong></th>");
+        trowDiv.append("<th scope='col'><strong>Location</strong></th>");
+        trowDiv.append("<th scope='col'><strong>Trail Length (miles)</strong></th>");
+        trowDiv.append("<th scope='col'><strong>Difficulty</strong></th>");
+        trowDiv.append("<th scope='col'><strong>Stars</strong></th>");
+        trowDiv.append("<th scope='col'><strong>Star Votes</strong></th>");
 
-    // dynamically create table row div.
-    var tbodyDiv = $("<tbody>");
-    tblDiv.append(tbodyDiv);
+        // dynamically create table body div.
+        var tbodyDiv = $("<tbody>");
+        tblDiv.append(tbodyDiv);
 
-    // dynamically create table row div.
-    var trowDiv = $("<tr>");
-    tbodyDiv.append(trowDiv);
-
-    // dynamically create table detail rows. 
-    var trail = response.trails;
-
-    for (var i = 0; i < 10; i++) {
         // dynamically create table row div.
         var trowDiv = $("<tr>");
         tbodyDiv.append(trowDiv);
-        // dynamically populate the table detail fields. 
-        trowDiv.append("<td class='api-detail'>" + trail[i].name);
-        trowDiv.append("<td class='api-detail'>" + trail[i].location);
-        trowDiv.append("<td class='api-detail'>" + trail[i].length);
-        trowDiv.append("<td class='api-detail'>" + trail[i].difficulty);
-        trowDiv.append("<td class='api-detail'>" + trail[i].stars);
-        trowDiv.append("<td class='api-detail'>" + trail[i].starVotes);
 
-        // Then dynamicaly generating buttons for each movie in the array.
-        // This code $("<button>") is all jQuery needs to create the start and end tag. (<button></button>)
-        var btnDiv = $("<button>");
-        // Adding a class
-        trowDiv.prepend("<button type='button' class='trail-btn btn btn-sm' data-id=" + trail[i].id + ">Select");
+        // dynamically create table detail rows. 
+        var trail = response.trails;
+
+        for (var i = 0; i < 10; i++) {
+            // dynamically create table row div.
+            var trowDiv = $("<tr>");
+            tbodyDiv.append(trowDiv);
+            // dynamically populate the table detail fields. 
+            trowDiv.append("<td class='api-detail'>" + trail[i].name);
+            trowDiv.append("<td class='api-detail'>" + trail[i].location);
+            trowDiv.append("<td class='api-detail'>" + trail[i].length);
+            trowDiv.append("<td class='api-detail'>" + trail[i].difficulty);
+            trowDiv.append("<td class='api-detail'>" + trail[i].stars);
+            trowDiv.append("<td class='api-detail'>" + trail[i].starVotes);
+
+            var btnDiv = $("<button>");
+            // Adding a class
+            trowDiv.prepend("<button type='button' class='trail-btn btn btn-sm' data-id=" + trail[i].id + ">Select");
+        }
     }
 }
 
+function buildClimbAPIrows(response) {
+    // this hides the activity selector bar.
+    $(".activity-selector").addClass("d-none");
+    // dynamically create table div.
+
+    var tblDiv = $("<table>");
+    tblDiv.addClass("table-responsive-sm");
+    tblDiv.addClass("table");
+    $(".data-display-area").append(tblDiv);
+
+    // dynamically create thead div. 
+    var theadDiv = $("<thead>");
+    $(tblDiv).append(theadDiv);
+
+    // dynamically create table row div.    
+    var trowDiv = $("<tr>");
+    theadDiv.append(trowDiv);
+
+    if (response.routes.length === 0) {
+        // send a back button and a no trails found message to user.
+        trowDiv.prepend("<button type='button' class='goto-activity-btn btn btn-sm'>Back");
+        trowDiv.append("<td class='api-detail text-left align-middle'><pre class='mb-0'><h6 class='mb-0' >Sorry ! No trails were found for the specified Miles Away.<em>    Use the Back button to return to the previous screen.</em></h6></pre></td>");
+    }
+    else {
+        // dynamically create the table header row.
+        trowDiv.prepend("<button type='button' class='goto-activity-btn btn btn-sm'>Back");
+        trowDiv.append("<th scope='col'><strong>Route Name</strong></th>");
+        trowDiv.append("<th scope='col'><strong>Location</strong></th>");
+        trowDiv.append("<th scope='col'><strong>Pitches</strong></th>");
+        trowDiv.append("<th scope='col'><strong>Difficulty</strong></th>");
+        trowDiv.append("<th scope='col'><strong>Stars</strong></th>");
+        trowDiv.append("<th scope='col'><strong>Star Votes</strong></th>");
+
+        // dynamically create table body div.
+        var tbodyDiv = $("<tbody>");
+        tblDiv.append(tbodyDiv);
+
+        // dynamically create table row div.
+        var trowDiv = $("<tr>");
+        tbodyDiv.append(trowDiv);
+
+        // dynamically create table detail rows. 
+        var route = response.routes;
+
+        for (var i = 0; i < 10; i++) {
+            // dynamically create table row div.
+            var trowDiv = $("<tr>");
+            tbodyDiv.append(trowDiv);
+            // dynamically populate the table detail fields. 
+            trowDiv.append("<td class='api-detail'>" + route[i].name);
+            trowDiv.append("<td class='api-detail'>" + route[i].location[1] + ", " + route[i].location[0]);
+            trowDiv.append("<td class='api-detail'>" + route[i].pitches);
+            trowDiv.append("<td class='api-detail'>" + route[i].rating);
+            trowDiv.append("<td class='api-detail'>" + route[i].stars);
+            trowDiv.append("<td class='api-detail'>" + route[i].starVotes);
+
+            var btnDiv = $("<button>");
+            // Adding a class
+            trowDiv.prepend("<button type='button' class='trail-btn btn btn-sm' data-id=" + route[i].id + ">Select");
+        }
+    }
+}
 
 
 
@@ -113,6 +318,7 @@ var config = {
     messagingSenderId: "1014982371782"
 };
 firebase.initializeApp(config);
+
 
 // On log in btn click - present #myModal2 
 $(window).on('load', function(){
@@ -248,10 +454,15 @@ $("#updateProfileBtn").on("click", function () {
 
 
 //  When user clicks the activity dropdown menu button. 
-$(document).on("click", "#activity-btn", function () {
+$(document).on("click", ".activity-btn", function () {
     event.preventDefault();
+    btnActivity = $(this).text();
+});
 
-
+//  When user clicks the miles-away dropdown menu button. 
+$(document).on("click", ".distance-btn", function () {
+    event.preventDefault();
+    btnDistance = $(this).text();
 });
 
 // add 'use current location' button. 
@@ -265,26 +476,32 @@ $("#current-loc-btn").on("click", function (event) {
         currLatLong = geoLocResult.split(", ");
         currLat = currLatLong[0];
         currLong = currLatLong[1];
-        // only call the Hiking API if the lat & long are populated with values. 
-        if (currLat != '' && currLong != '') {
-            callHikingApi(currLat, currLong, 50);
-        }
+        // only call the API if buttons are populated with values. 
+        prepareApiCall(btnActivity, btnDistance, currLat, currLong);
     });
+});
+
+// when user entered a numeric zip code and clicked submit button.
+$("#zip-code-submit-btn").on("click", function (event) {
+    event.preventDefault();
+    zipCode = $("#zip-code-input").val().trim();
+    $("#zip-code-input").val("");
+
+    if (zipCode !== "") {        
+        getLatLongFromZip(zipCode);
+    }
 });
 
 //  When user clicks a displayed api row. 
 $(document).on("click", ".trail-btn", function () {
 
     trailId = $(this).attr("data-id");
-    alert("You have clicked a table row that has trailId " + trailId);
-    
 });
 
 //  When user clicks the back button on the displayed table. 
 $(document).on("click", ".goto-activity-btn", function () {
     $(".activity-selector").removeClass("d-none");
     $(".data-display-area").empty();
-
 });
 
 

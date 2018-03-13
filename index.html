@@ -39,26 +39,28 @@
 
     <div class="activity-selector input-group">
       <div class="input-group input-group-prepend">
-        <button class="btn btn-outline-secondary btn-group dropdown-toggle" id="activity-btn" type="button" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">Activity</button>
+        <button class="btn btn-outline-secondary btn-group dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">Activity</button>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="#" data-activity="hiking">Hiking</a>
-          <a class="dropdown-item" href="#" data-activity="fishing">Fishing</a>
-          <a class="dropdown-item" href="#" data-activity="skiing">Skiing</a>
-          <a class="dropdown-item" href="#" data-activity="mtn-climbing">Mountain Climbing</a>
+          <a class="dropdown-item activity-btn" href="#">Hiking</a>
+          <a class="dropdown-item activity-btn" href="#">Mountain Biking</a>
+          <a class="dropdown-item activity-btn" href="#">Skiing</a>
+          <a class="dropdown-item activity-btn" href="#">Mountain Climbing</a>
         </div>
-        <button class="btn btn-outline-secondary btn-group dropdown-toggle" id="distance-btn" type="button" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">Miles Away</button>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="#" data-distance="5">5</a>
-          <a class="dropdown-item" href="#" data-distance="15">15</a>
-          <a class="dropdown-item" href="#" data-distance="25">25</a>
-          <a class="dropdown-item" href="#" data-distance="50">50</a>
+        <div class=input-group-prepend>
+          <button class="btn btn-outline-secondary btn-group dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">Miles Away</button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item distance-btn" href="#">5</a>
+            <a class="dropdown-item distance-btn" href="#">25</a>
+            <a class="dropdown-item distance-btn" href="#">50</a>
+            <a class="dropdown-item distance-btn" href="#">100</a>
+          </div>
         </div>
         <button class="btn btn-outline-secondary btn-group" id="current-loc-btn" type="button">Use Current Location</button>
         <input type="number" class="form-control" id="zip-code-input" maxlength="5" placeholder="Zip Code">
         <div class="input-group-append">
-          <button class="btn btn-outline-secondary btn-group" type="submit">Submit</button>
+          <button class="btn btn-outline-secondary btn-group" id="zip-code-submit-btn" type="submit">Submit</button>
         </div>
       </div>
     </div>
