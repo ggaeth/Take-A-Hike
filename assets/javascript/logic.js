@@ -114,6 +114,9 @@ var config = {
 };
 firebase.initializeApp(config);
 
+var database = firebase.database();
+
+
 // On log in btn click - present #myModal2 
 $(window).on('load', function(){
     $("#logInBtn").text("LOG IN");
@@ -286,6 +289,8 @@ $(document).on("click", ".goto-activity-btn", function () {
     $(".data-display-area").empty();
 
 });
+
+$('.covervid-video').coverVid(1920, 1080);
 
 
 
