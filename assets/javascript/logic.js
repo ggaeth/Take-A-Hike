@@ -354,13 +354,6 @@ console.log("dnone");
      
      $("#trail-info").prepend(trailDiv);
 
-     var trailImageDiv = $("<div class='tImage'>");
-     var imgURL = title.imgSmallMed;
-     var image = $("<img>").attr("src", imgURL);
-     trailImageDiv.append(image);
-     
-     $("#trail-image").prepend(trailImageDiv);
-
     console.log(trailById);
   }
 
@@ -374,6 +367,7 @@ console.log("dnone");
                  click: function() {
                      //alert ( this.value );
                      $(".data-display-area").removeClass("d-none");
+                     $(".trail-id-display").empty();
             
                  }
               }
