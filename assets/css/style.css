@@ -105,11 +105,7 @@ a.effect-underline:hover:before, #logInBtn:hover:before  {
   }
 
 
-/*.home-body {
-    background-image: url(../images/shutterstock_176085914.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-}*/
+
 
 .profile-body {
     background-image: url(../images/DelicateArch.jpg);
@@ -173,6 +169,7 @@ form {
     outline: none;
     opacity: .85;
 }
+
 
 .favorites-con {
     padding: 40px;
