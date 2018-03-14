@@ -10,6 +10,9 @@ opacity: .98;
 
 
 }
+  iframe {
+    width:100%; max-width:1100px; height:410px; margin-bottom: 25px;
+  }
 
 .covervid-wrapper {
   position: absolute;
@@ -262,7 +265,10 @@ form {
 .card {
     margin: 70px;
 }
+.trail-id-display {
+  background-color: whitesmoke;
 
+}
 #trail-info {
     position: relative;
   }

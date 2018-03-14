@@ -19,6 +19,7 @@ var zipJsonLong = "";
 
 var response = "";
 
+var trailId = "";
 
 // ======================================< functions >============================================ //
 function currPosError(err) {
@@ -304,6 +305,102 @@ function buildClimbAPIrows(response) {
     }
 }
 
+//map functions
+ function trailWidget(trailById) {
+  $('<iframe>', {
+   src: 'https://www.hikingproject.com/widget?v=3&map=1&type=trail&id=' + trailId,
+   id:  'myFrame',
+   frameborder: 0,
+   scrolling: 'no'
+   }).appendTo('#map');
+
+
+  }
+
+  function trailInfo(trailById) {
+    // DYNAMIC SEARCH FROM TITLE*****
+   /* $(document).on("click", ".trail-btn", function () {
+    trailId = $(this).attr("data-id");
+});*/$(".data-display-area").addClass("d-none");
+console.log("dnone");
+     var title = trailById.trails[0];
+
+     var trailDiv = $("<div class='trail'>");
+     
+     var name = title.name;
+     var pOne = $("<h1>").text(name);      
+     trailDiv.append(pOne);
+  
+     var location = title.location;      
+     var pTwo = $("<p>").text("Location: " + location); 
+     trailDiv.append(pTwo);
+
+     var difficulty = title.difficulty;
+     var pFour = $("<p>").text("Difficulty: " + difficulty) 
+     trailDiv.append(pFour);
+
+     var length = title.length;
+     var pFive = $("<p>").text("Length: " + length + " Miles");
+     trailDiv.append(pFive);
+
+     var hElevation = title.high;
+     var lElevation = title.low;
+     var pSix = $("<p>").text("Elevation:  High-" + hElevation + "ft" + " " + "Low-" + lElevation + "ft");
+     trailDiv.append(pSix);
+
+     var summary = title.summary;
+     var pThree = $("<p>").text("Summary: " + summary);
+     trailDiv.append(pThree);
+     
+     $("#trail-info").prepend(trailDiv);
+
+     var trailImageDiv = $("<div class='tImage'>");
+     var imgURL = title.imgSmallMed;
+     var image = $("<img>").attr("src", imgURL);
+     trailImageDiv.append(image);
+     
+     $("#trail-image").prepend(trailImageDiv);
+
+    console.log(trailById);
+  }
+
+    function dynamicButtons() {
+         var div = $('<div />', {'data-role' : 'fieldcontain'}),
+    btn = $('<input />', {
+              type  : 'button',
+              value : 'Go Back!',
+              id    : 'btn_a',
+              on    : {
+                 click: function() {
+                     //alert ( this.value );
+                     $(".data-display-area").removeClass("d-none");
+            
+                 }
+              }
+          });
+
+div.append(btn).appendTo($('#buttons'));
+  }
+    
+    function callTrailById(trailId) {
+        console.log("entering");
+
+    var apiKey = "200228428-1f5b2e55867344554f904d9273de0486";
+    queryURL = "https://www.hikingproject.com/data/get-trails-by-id?ids=" + trailId + "&key=" + apiKey;
+    console.log(queryURL);
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    })
+      .then(function (trailById) { 
+             
+      trailInfo(trailById);
+      trailWidget(trailById);
+      dynamicButtons();
+
+   }); 
+      console.log("leaving");
+    }
 
 
 // ======================================< main process >========================================= //
@@ -499,7 +596,9 @@ $("#zip-code-submit-btn").on("click", function (event) {
 //  When user clicks a displayed api row. 
 $(document).on("click", ".trail-btn", function () {
 
-    trailId = $(this).attr("data-id");
+   trailId = $(this).attr("data-id");
+   console.log(trailId);
+   callTrailById(trailId);
 });
 
 //  When user clicks the back button on the displayed table. 
