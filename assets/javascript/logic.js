@@ -604,8 +604,12 @@ $(document).on("click", ".goto-activity-btn", function () {
     $(".data-display-area").empty();
 });
 
+<<<<<<< HEAD
 $('.covervid-video').coverVid(3000, 2000);
 //might need adjusting
+=======
+$('.covervid-video').coverVid(3000, 1080);
+>>>>>>> 5d0f40953c90feb46854cafe5e0f46a79ed242fc
 
 
 
