@@ -102,24 +102,6 @@ a.effect-underline:hover:before, #logInBtn:hover:before  {
   }
 
 
-/*.home-body {
-    background-image: url(../images/shutterstock_176085914.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-}*/
-
-.profile-body {
-    background-image: url(../images/DelicateArch.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.favorite-body {
-    background-image: url(../images/favorites-back.jpeg);
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
 h3, form, .modal-content {
     margin: 35px;
     padding: 35px;
@@ -150,9 +132,7 @@ form {
     color: whitesmoke;
     font-family: 'Oldenburg', cursive;
     font-size: 14px;
-    font-weight: bold;
-
-    
+    font-weight: bold;   
 }
 
 #zip-code-input.form-control {
