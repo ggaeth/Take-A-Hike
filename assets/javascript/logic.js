@@ -311,7 +311,8 @@ function buildClimbAPIrows(response) {
    src: 'https://www.hikingproject.com/widget?v=3&map=1&type=trail&id=' + trailId,
    id:  'myFrame',
    frameborder: 0,
-   scrolling: 'no'
+   scrolling: 'no',
+   height: '410px'
    }).appendTo('#map');
 
 
@@ -368,6 +369,8 @@ console.log("dnone");
                      //alert ( this.value );
                      $(".data-display-area").removeClass("d-none");
                      $(".trail-id-display").empty();
+                     console.log("trail-id-disp");
+                     $("#buttons").empty();
             
                  }
               }
@@ -601,7 +604,8 @@ $(document).on("click", ".goto-activity-btn", function () {
     $(".data-display-area").empty();
 });
 
-$('.covervid-video').coverVid(1920, 1080);
+$('.covervid-video').coverVid(3000, 2000);
+//might need adjusting
 
 
 
