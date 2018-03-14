@@ -601,7 +601,7 @@ $(document).on("click", ".goto-activity-btn", function () {
     $(".data-display-area").empty();
 });
 
-$('.covervid-video').coverVid(3000, 1080);
+$('.covervid-video').coverVid(5000, 7000);
 
 
 
