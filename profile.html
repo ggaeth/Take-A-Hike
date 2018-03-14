@@ -11,6 +11,8 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
   <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/covervid@1.0.0/covervid.min.js"></script>
+
   
 
   <!-- Bootstrap CSS -->
@@ -29,21 +31,18 @@
 
   <body class="profile-body">
 
+      <div class="covervid-wrapper">
+          <video class="covervid-video" autoplay loop poster="assets/images/Canyon_22___4K_res.mp4">
+              <source src="assets/images/Canyon_22___4K_res.mp4" type="video/mp4">
+          </video>
+      </div>
+
   <div class="jumbotron jumbotron-fluid">
     <h1 class="display-4 text-center">TAKE-A-HIKE</h1>
+    <a class="effect-underline header" id="logInBtn"></a>
       <a href="index.html" class="effect-underline header">HOME</a>
       <a href="#" class="effect-underline header">PROFILE</a>
-      <a class="effect-underline header" id="logInBtn"></a>
     </div>
-
-
-         
-  <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="assets/images/profile-upload.jpg" alt="Card image cap">
-        <div class="card-body">
-          <p class="card-text">Tag line.</p>
-        </div>
-  </div>
 
 <form>
 

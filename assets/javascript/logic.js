@@ -508,7 +508,9 @@ $(document).on("click", ".goto-activity-btn", function () {
     $(".data-display-area").empty();
 });
 
-$('.covervid-video').coverVid(1920, 1080);
+$('.covervid-video').coverVid(2080, 1080);
+
+
 
 
 
