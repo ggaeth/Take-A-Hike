@@ -272,11 +272,6 @@ form {
 .card {
     margin: 70px;
 }
-<<<<<<< HEAD
-
-#trail-info {
-=======
-
 .trail-id-display {
 
   min-height: 0px;
@@ -292,7 +287,6 @@ form {
     text-align: center;
   }
   .trail-info {
->>>>>>> d08fef226baae3b99f34f7bb5bb86b778fe84e3d
     position: relative;
     background-color: whitesmoke;
     width: 100%;
@@ -323,4 +317,3 @@ input[type="number"]::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
   }
-
