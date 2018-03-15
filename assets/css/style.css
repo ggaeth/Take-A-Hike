@@ -52,6 +52,14 @@ h1 {
 
   }
 
+    h2 {
+    text-align: center;
+    font-family: 'Oldenburg', cursive;
+    color: whitesmoke;
+    background-color: #155414;
+    letter-spacing: .1em;
+  }
+
   #logInBtn {
   background: none;
   color: inherit;
@@ -257,18 +265,29 @@ form {
     position: relative;
     overflow: hidden;
     height: 420px !important;
-    width: 1100px;
+    text-align: center;
     margin-bottom: 25px;
 }
 
 .card {
     margin: 70px;
 }
+
 .trail-id-display {
-  background-color: whitesmoke;
+
+  min-height: 0px;
 
 }
-#trail-info {
+.trail {
+    position: relative;
+    background-color: whitesmoke;
+    width: 100%;
+    margin-bottom: 25px;
+    opacity: 0.95;
+    color: black;
+    text-align: center;
+  }
+  .trail-info {
     position: relative;
     background-color: whitesmoke;
     width: 100%;
