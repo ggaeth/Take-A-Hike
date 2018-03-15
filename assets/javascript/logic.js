@@ -595,16 +595,9 @@ $(document).on("click", ".goto-activity-btn", function () {
 });
 
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-$('.covervid-video').coverVid(1920, 1080);
 
-=======
 $('.covervid-video').coverVid(5000, 7000);
->>>>>>> a2cdfaecdbb2bad2e75ca5a93272d09833f0ac82
-=======
-$('.covervid-video').coverVid(5000, 7000);
->>>>>>> a2cdfaecdbb2bad2e75ca5a93272d09833f0ac82
+
 
 
 
