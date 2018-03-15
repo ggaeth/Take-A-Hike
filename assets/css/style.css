@@ -270,6 +270,11 @@ form {
 }
 #trail-info {
     position: relative;
+    background-color: whitesmoke;
+    width: 100%;
+    margin-bottom: 25px;
+    opacity: 0.95;
+    color: black;
   }
 
   .table {

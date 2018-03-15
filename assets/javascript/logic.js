@@ -323,7 +323,6 @@ function buildClimbAPIrows(response) {
    /* $(document).on("click", ".trail-btn", function () {
     trailId = $(this).attr("data-id");
 });*/$(".data-display-area").addClass("d-none");
-console.log("dnone");
      var title = trailById.trails[0];
 
      var trailDiv = $("<div class='trail'>");
@@ -331,22 +330,15 @@ console.log("dnone");
      var name = title.name;
      var pOne = $("<h1>").text(name);      
      trailDiv.append(pOne);
-  
+
      var location = title.location;      
      var pTwo = $("<p>").text("Location: " + location); 
      trailDiv.append(pTwo);
 
-     var difficulty = title.difficulty;
-     var pFour = $("<p>").text("Difficulty: " + difficulty) 
-     trailDiv.append(pFour);
-
-     var length = title.length;
-     var pFive = $("<p>").text("Length: " + length + " Miles");
-     trailDiv.append(pFive);
-
      var hElevation = title.high;
      var lElevation = title.low;
      var pSix = $("<p>").text("Elevation:  High-" + hElevation + "ft" + " " + "Low-" + lElevation + "ft");
+     
      trailDiv.append(pSix);
 
      var summary = title.summary;
@@ -355,7 +347,6 @@ console.log("dnone");
      
      $("#trail-info").prepend(trailDiv);
 
-    console.log(trailById);
   }
 
     function dynamicButtons() {
@@ -369,7 +360,7 @@ console.log("dnone");
                      //alert ( this.value );
                      $(".data-display-area").removeClass("d-none");
                      $(".trail-id-display").empty();
-                     console.log("trail-id-disp");
+
                      $("#buttons").empty();
             
                  }
@@ -380,7 +371,6 @@ div.append(btn).appendTo($('#buttons'));
   }
     
     function callTrailById(trailId) {
-        console.log("entering");
 
     var apiKey = "200228428-1f5b2e55867344554f904d9273de0486";
     queryURL = "https://www.hikingproject.com/data/get-trails-by-id?ids=" + trailId + "&key=" + apiKey;
@@ -396,7 +386,7 @@ div.append(btn).appendTo($('#buttons'));
       dynamicButtons();
 
    }); 
-      console.log("leaving");
+
     }
 
 
