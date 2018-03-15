@@ -10,6 +10,10 @@ opacity: .98;
 
 
 }
+body {
+  background-color: black;
+  color: black;
+}
   iframe {
     width:100%; 
     max-width:1100px; 
