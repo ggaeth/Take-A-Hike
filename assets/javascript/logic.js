@@ -346,10 +346,10 @@ function buildTrailInfo(trailId, apiObject) {
  
     for (var i = 0; i < apiTrails.length; i++) {
  
-        console.log("apiObject trail-id is " + apiTrails[i].id + "   passed trailId is " + trailId);
+
  
         if (apiTrails[i].id == trailId) {
-            console.log("apiTrails id matches passed trailId !");
+
  
             var trailIdDiv = $("<div id='trail-info'>");
            
@@ -359,8 +359,7 @@ function buildTrailInfo(trailId, apiObject) {
  
             trailDiv.append("<h2>" + apiTrails[i].name);
             trailDiv.append("<p>Location: " + apiTrails[i].location);
-           // trailDiv.append("<p>Difficulty: " + apiTrails[i].difficulty);
-           // trailDiv.append("<p>Length: " + apiTrails[i].length + " Miles");
+
             trailDiv.append("<p>Elevation:  High-" + apiTrails[i].high + " ft" + " " + "Low-" + apiTrails[i].low + " ft");
            
             trailDiv.append("<p>Summary: " + apiTrails[i].summary);
@@ -395,10 +394,7 @@ function buildRouteInfo(trailId, apiObject) {
  
     for (var i = 0; i < apiRoutes.length; i++) {
  
-        console.log("apiObject route-id is " + apiRoutes[i].id + "   passed trailId is " + trailId);
- 
         if (apiRoutes[i].id == trailId) {
-            console.log("apiRoutes id matches passed trailId !");
  
             var routeIdDiv = $("<div id='route-info'>");
  
@@ -434,7 +430,6 @@ function dynamicButtons() {
                     //alert ( this.value );
                     $(".data-display-area").removeClass("d-none");
                     $(".trail-id-display").empty();
-                    console.log("trail-id-disp");
                     $("#buttons").empty();
  
                 }
@@ -445,11 +440,8 @@ function dynamicButtons() {
 }
  
 function callTrailById(trailId) {
-    console.log("entering");
- 
     var apiKey = "200228428-1f5b2e55867344554f904d9273de0486";
     queryURL = "https://www.hikingproject.com/data/get-trails-by-id?ids=" + trailId + "&key=" + apiKey;
-    console.log(queryURL);
     $.ajax({
         url: queryURL,
         method: "GET"
@@ -461,7 +453,6 @@ function callTrailById(trailId) {
             dynamicButtons();
  
         });
-    console.log("leaving");
 }
  
  
@@ -650,7 +641,6 @@ $("#zip-code-submit-btn").on("click", function (event) {
 $(document).on("click", ".trail-btn", function () {
     //alert("trail-btn clicked");
     trailId = $(this).attr("data-id");
-    console.log(trailId);
     //callTrailById(trailId);
     if (btnActivity == "Mountain Climbing") {
         buildRouteInfo(trailId, apiObject);
