@@ -346,8 +346,6 @@ function buildTrailInfo(trailId, apiObject) {
  
     for (var i = 0; i < apiTrails.length; i++) {
  
-
- 
         if (apiTrails[i].id == trailId) {
 
  
