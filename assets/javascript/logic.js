@@ -112,9 +112,6 @@ function prepareApiCall(btnActivity, btnDistance, apiLat, apiLong) {
             case "Skiing":
                 callSkiingApi(lat, long, btnDistance);
                 break;
-            case "Mountain Climbing":
-                callMtnClimbingApi(lat, long, btnDistance)
-                break;
         }
     }
 }
@@ -164,20 +161,6 @@ function callSkiingApi(skiingLat, skiingLong, apiDistance) {
     });
 }    
 
-function callMtnClimbingApi(mtnclimbingLat, mtnclimbingLong, apiDistance) {
-
-    var apiKey = "200228428-df342573e943430d27861e3e0bbe6123";
-
-    queryURL = "https://www.mountainproject.com/data/get-routes-for-lat-lon?lat=" + mtnclimbingLat +
-        "&lon=" + mtnclimbingLong + "&maxDistance=" + apiDistance + "&key=" + apiKey;
-
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    }).then(function (response) {
-        buildClimbAPIrows(response);
-    });
-}
 
 function buildAPIrows(response) {
     // this hides the activity selector bar.
